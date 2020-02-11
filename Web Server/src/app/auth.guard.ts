@@ -17,7 +17,8 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const currentUser = this._auth.loggedIn()
     if (currentUser) {
-      this._securityService.getUserGroupFeatures()
+      return true
+      /* this._securityService.getUserGroupFeatures()
         .subscribe(
           res => {
             res.forEach(element => {
@@ -45,7 +46,7 @@ export class AuthGuard implements CanActivate {
 
       console.log(route.component.toString().split(' ')[1].split(' ')[0])
 
-      return true
+      return true */
     } else {
       sessionStorage.clear()
       this._router.navigate(['./login'])
